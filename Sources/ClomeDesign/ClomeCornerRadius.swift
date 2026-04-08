@@ -3,26 +3,26 @@ import SwiftUI
 // MARK: - Clome Corner Radius System
 
 /// Platform-aware corner radii for the Clome ecosystem.
-/// Clome desktop uses tight radii; Clome Flow iOS uses larger tap-friendly radii.
+/// The shell now favors slightly roomier Apple-like corners on macOS too.
 public enum ClomeCornerRadius {
     /// Sections within the Clome panel
-    public static let panel: CGFloat = 6
+    public static let panel: CGFloat = 10
 
     /// Buttons, pills, chips
     public static let button: CGFloat = {
         #if os(iOS)
-        return 8
+        return 12
         #else
-        return 4
+        return 10
         #endif
     }()
 
     /// Cards in the standalone app
     public static let card: CGFloat = {
         #if os(iOS)
-        return 12
+        return 16
         #else
-        return 8
+        return 12
         #endif
     }()
 
@@ -31,51 +31,51 @@ public enum ClomeCornerRadius {
         #if os(iOS)
         return 14
         #else
-        return 8
+        return 12
         #endif
     }()
 
     /// Input fields
     public static let input: CGFloat = {
         #if os(iOS)
-        return 8
+        return 12
         #else
-        return 4
+        return 10
         #endif
     }()
 
     /// Top-level windows (macOS only)
-    public static let window: CGFloat = 14
+    public static let window: CGFloat = 18
 }
 
 // MARK: - Clome Spacing System
 
-/// Compact spacing for Clome panels, standard spacing for iOS.
+/// Shared spacing tuned toward calmer section rhythm.
 public enum ClomeSpacing {
     /// List row height
     public static let rowHeight: CGFloat = {
         #if os(iOS)
         return 40
         #else
-        return 24
+        return 28
         #endif
     }()
 
     /// Card internal padding
     public static let cardPadding: CGFloat = {
         #if os(iOS)
-        return 12
+        return 16
         #else
-        return 8
+        return 12
         #endif
     }()
 
     /// Gap between major sections
     public static let sectionGap: CGFloat = {
         #if os(iOS)
-        return 20
+        return 24
         #else
-        return 12
+        return 16
         #endif
     }()
 
@@ -84,7 +84,7 @@ public enum ClomeSpacing {
         #if os(iOS)
         return 40
         #else
-        return 28
+        return 36
         #endif
     }()
 
@@ -93,7 +93,7 @@ public enum ClomeSpacing {
         #if os(iOS)
         return 44
         #else
-        return 22
+        return 40
         #endif
     }()
 }

@@ -63,7 +63,7 @@ public enum ClomeDesignMode: String, CaseIterable, Identifiable, Sendable {
 // MARK: - Unified Palette
 
 /// Adaptive color palette for the Clome ecosystem.
-/// Dark mode uses Clome's opacity-based layering on #0E0E12.
+/// The palette intentionally favors restrained surfaces and subtle borders.
 public struct ClomePalette: Sendable {
     public let bg: Color
     public let surface: Color
@@ -82,12 +82,10 @@ public struct ClomePalette: Sendable {
     // MARK: - Dark Palette (Clome-aligned)
 
     public static func dark(accent: Color = ClomeAccentTheme.graphite.darkAccent) -> ClomePalette {
-        // Approximate white-overlay-on-#0E0E12 as solid RGB values
-        // base (0.055, 0.055, 0.071) + white * alpha → lerp
         ClomePalette(
             bg: ClomeColor.base,
-            surface: Color(red: 0.083, green: 0.083, blue: 0.099),     // +3% white
-            surfaceAlt: Color(red: 0.112, green: 0.112, blue: 0.127),  // +6% white
+            surface: ClomeColor.surface,
+            surfaceAlt: ClomeColor.surfaceAlt,
             bright: ClomeColor.textPrimary,
             text: ClomeColor.textSecondary,
             dim: ClomeColor.textTertiary,
@@ -111,7 +109,7 @@ public struct ClomePalette: Sendable {
             bright: ClomeColor.lightTextPrimary,
             text: ClomeColor.lightTextSecondary,
             dim: ClomeColor.lightTextTertiary,
-            dark: Color(red: 0.820, green: 0.824, blue: 0.833),
+            dark: ClomeColor.lightBorder,
             accent: accent,
             red: ClomeColor.error(dark: false),
             yellow: ClomeColor.warning(dark: false),
