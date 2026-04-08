@@ -65,6 +65,11 @@ public struct NoteConversationMessage: Codable, Identifiable, Sendable {
 
 public struct NoteEntry: Codable, Identifiable, Sendable {
     public let id: UUID
+    /// The workspace this note belongs to. Optional only during the
+    /// migration window — nil values are coerced to the user's Personal
+    /// workspace ID by the sync layer at read time.
+    /// See `docs/flow-workspaces-spec.md` § 3.6.
+    public var workspaceId: String?
     public let rawContent: String
     public var summary: String
     public var category: NoteCategory
@@ -78,6 +83,7 @@ public struct NoteEntry: Codable, Identifiable, Sendable {
 
     public init(
         id: UUID = UUID(),
+        workspaceId: String? = nil,
         rawContent: String,
         summary: String,
         category: NoteCategory,
@@ -90,6 +96,7 @@ public struct NoteEntry: Codable, Identifiable, Sendable {
         formattedContent: String = ""
     ) {
         self.id = id
+        self.workspaceId = workspaceId
         self.rawContent = rawContent
         self.summary = summary
         self.category = category
@@ -105,6 +112,7 @@ public struct NoteEntry: Codable, Identifiable, Sendable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
+        workspaceId = try container.decodeIfPresent(String.self, forKey: .workspaceId)
         rawContent = try container.decode(String.self, forKey: .rawContent)
         summary = try container.decode(String.self, forKey: .summary)
         category = try container.decode(NoteCategory.self, forKey: .category)

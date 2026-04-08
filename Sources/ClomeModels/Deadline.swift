@@ -2,6 +2,11 @@ import Foundation
 
 public struct Deadline: Codable, Identifiable, Sendable {
     public let id: UUID
+    /// The workspace this deadline belongs to. Optional only during the
+    /// migration window — nil values are coerced to the user's Personal
+    /// workspace ID by the sync layer at read time.
+    /// See `docs/flow-workspaces-spec.md` § 3.5.
+    public var workspaceId: String?
     public var title: String
     public var dueDate: Date
     public var category: HabitCategory
@@ -13,6 +18,7 @@ public struct Deadline: Codable, Identifiable, Sendable {
 
     public init(
         id: UUID = UUID(),
+        workspaceId: String? = nil,
         title: String,
         dueDate: Date,
         category: HabitCategory = .general,
@@ -23,6 +29,7 @@ public struct Deadline: Codable, Identifiable, Sendable {
         projectTag: String? = nil
     ) {
         self.id = id
+        self.workspaceId = workspaceId
         self.title = title
         self.dueDate = dueDate
         self.category = category
