@@ -7,60 +7,72 @@ import SwiftUI
 /// restrained neutrals, thin borders, and one structural accent.
 public enum ClomeColor {
 
+    // MARK: - Website Reference Colors
+
+    public static let paper = Color(red: 0.957, green: 0.945, blue: 0.918)
+    public static let paperWarm = Color(red: 0.937, green: 0.922, blue: 0.886)
+    public static let ink = Color(red: 0.055, green: 0.063, blue: 0.078)
+    public static let inkSecondary = Color(red: 0.290, green: 0.310, blue: 0.341)
+    public static let inkTertiary = Color(red: 0.541, green: 0.565, blue: 0.604)
+    public static let rule = ink.opacity(0.09)
+    public static let ruleStrong = ink.opacity(0.18)
+
     // MARK: - Base (Dark)
 
-    /// Deep ink background
-    public static let base = Color(red: 0.059, green: 0.067, blue: 0.090)
+    /// Deep ink shell derived from the site palette.
+    public static let base = Color(red: 0.071, green: 0.082, blue: 0.106)
 
-    /// Layered dark surfaces
-    public static let surface = Color(red: 0.102, green: 0.114, blue: 0.153)
-    public static let surfaceAlt = Color(red: 0.142, green: 0.157, blue: 0.200)
-    public static let surfaceElevated = Color(red: 0.176, green: 0.192, blue: 0.235)
-    public static let surfaceHighest = Color(red: 0.239, green: 0.255, blue: 0.333)
+    /// Layered dark surfaces with slightly warmer contrast than the old theme.
+    public static let surface = Color(red: 0.102, green: 0.118, blue: 0.153)
+    public static let surfaceAlt = Color(red: 0.133, green: 0.153, blue: 0.196)
+    public static let surfaceElevated = Color(red: 0.169, green: 0.188, blue: 0.235)
+    public static let surfaceHighest = Color(red: 0.224, green: 0.243, blue: 0.302)
 
     /// Borders and dividers
-    public static let border = Color(red: 0.176, green: 0.192, blue: 0.235)
-    public static let borderSubtle = Color(red: 0.176, green: 0.192, blue: 0.235).opacity(0.65)
-    public static let borderStrong = Color(red: 0.239, green: 0.255, blue: 0.333)
+    public static let border = Color.white.opacity(0.10)
+    public static let borderSubtle = Color.white.opacity(0.07)
+    public static let borderStrong = Color.white.opacity(0.18)
 
     // MARK: - Text Hierarchy (Dark)
 
-    public static let textPrimary = Color(red: 0.953, green: 0.957, blue: 0.969)
-    public static let textSecondary = Color(red: 0.773, green: 0.792, blue: 0.831)
-    public static let textTertiary = Color(red: 0.616, green: 0.635, blue: 0.706)
-    public static let textMuted = Color(red: 0.482, green: 0.498, blue: 0.588)
+    public static let textPrimary = Color(red: 0.949, green: 0.953, blue: 0.965)
+    public static let textSecondary = Color(red: 0.753, green: 0.773, blue: 0.816)
+    public static let textTertiary = Color(red: 0.588, green: 0.608, blue: 0.655)
+    public static let textMuted = Color(red: 0.447, green: 0.467, blue: 0.514)
 
     // MARK: - Light Mode Neutrals
 
-    public static let lightBg = Color(red: 0.973, green: 0.969, blue: 0.953)
-    public static let lightSurface = Color(red: 0.988, green: 0.984, blue: 0.973)
-    public static let lightSurfaceAlt = Color(red: 0.953, green: 0.957, blue: 0.969)
-    public static let lightBorder = Color(red: 0.059, green: 0.067, blue: 0.090).opacity(0.08)
-    public static let lightTextPrimary = Color(red: 0.059, green: 0.067, blue: 0.090)
-    public static let lightTextSecondary = Color(red: 0.361, green: 0.376, blue: 0.471)
-    public static let lightTextTertiary = Color(red: 0.616, green: 0.635, blue: 0.706)
+    public static let lightBg = paper
+    public static let lightSurface = Color(red: 0.952, green: 0.937, blue: 0.902)
+    public static let lightSurfaceAlt = Color(red: 0.980, green: 0.972, blue: 0.952)
+    public static let lightSurfaceElevated = Color(red: 0.992, green: 0.988, blue: 0.980)
+    public static let lightBorder = rule
+    public static let lightTextPrimary = ink
+    public static let lightTextSecondary = inkSecondary
+    public static let lightTextTertiary = inkTertiary
 
     // MARK: - Accent
 
-    /// Structural graphite accent used sparingly across the shell
-    public static let accent = Color(red: 0.247, green: 0.667, blue: 0.616)
+    /// Structural accent aligned with the website's editorial blue.
+    public static let accent = Color(red: 0.118, green: 0.290, blue: 0.659)
+    public static let accentSoft = accent.opacity(0.08)
 
     // MARK: - Semantic
 
     public static func success(dark: Bool) -> Color {
-        dark ? Color(red: 0.322, green: 0.729, blue: 0.588) : Color(red: 0.227, green: 0.561, blue: 0.443)
+        dark ? Color(red: 0.431, green: 0.765, blue: 0.627) : Color(red: 0.227, green: 0.561, blue: 0.443)
     }
 
     public static func warning(dark: Bool) -> Color {
-        dark ? Color(red: 0.922, green: 0.722, blue: 0.420) : Color(red: 0.831, green: 0.533, blue: 0.243)
+        dark ? Color(red: 0.949, green: 0.753, blue: 0.447) : Color(red: 0.831, green: 0.533, blue: 0.243)
     }
 
     public static func error(dark: Bool) -> Color {
-        dark ? Color(red: 0.902, green: 0.490, blue: 0.490) : Color(red: 0.753, green: 0.310, blue: 0.310)
+        dark ? Color(red: 0.925, green: 0.549, blue: 0.529) : Color(red: 0.753, green: 0.310, blue: 0.310)
     }
 
     public static func info(dark: Bool) -> Color {
-        dark ? Color(red: 0.490, green: 0.678, blue: 0.882) : Color(red: 0.290, green: 0.498, blue: 0.753)
+        dark ? Color(red: 0.502, green: 0.655, blue: 0.902) : Color(red: 0.180, green: 0.392, blue: 0.710)
     }
 
     // MARK: - Gold (Rewards/XP)

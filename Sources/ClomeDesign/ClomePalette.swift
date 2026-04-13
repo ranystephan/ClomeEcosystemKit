@@ -68,6 +68,12 @@ public struct ClomePalette: Sendable {
     public let bg: Color
     public let surface: Color
     public let surfaceAlt: Color
+    public let elevated: Color
+    public let windowBackground: Color
+    public let sidebarSurface: Color
+    public let chromeSurface: Color
+    public let chromeSurfaceAlt: Color
+    public let windowTintOpacity: CGFloat
     public let bright: Color
     public let text: Color
     public let dim: Color
@@ -86,6 +92,12 @@ public struct ClomePalette: Sendable {
             bg: ClomeColor.base,
             surface: ClomeColor.surface,
             surfaceAlt: ClomeColor.surfaceAlt,
+            elevated: ClomeColor.surfaceElevated,
+            windowBackground: ClomeColor.base,
+            sidebarSurface: ClomeColor.base,
+            chromeSurface: ClomeColor.surface,
+            chromeSurfaceAlt: ClomeColor.surfaceAlt,
+            windowTintOpacity: 0.92,
             bright: ClomeColor.textPrimary,
             text: ClomeColor.textSecondary,
             dim: ClomeColor.textTertiary,
@@ -106,6 +118,12 @@ public struct ClomePalette: Sendable {
             bg: ClomeColor.lightBg,
             surface: ClomeColor.lightSurface,
             surfaceAlt: ClomeColor.lightSurfaceAlt,
+            elevated: ClomeColor.lightSurfaceElevated,
+            windowBackground: ClomeColor.paper,
+            sidebarSurface: ClomeColor.paper,
+            chromeSurface: ClomeColor.paperWarm,
+            chromeSurfaceAlt: ClomeColor.lightSurfaceAlt,
+            windowTintOpacity: 0.985,
             bright: ClomeColor.lightTextPrimary,
             text: ClomeColor.lightTextSecondary,
             dim: ClomeColor.lightTextTertiary,
